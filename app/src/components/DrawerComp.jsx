@@ -1,4 +1,5 @@
 import React from "react";
+import {Link as ReachLink} from 'react-router-dom'
 import {
   Drawer,
   DrawerBody,
@@ -32,10 +33,10 @@ function DrawerComp({ isOpen, onOpen, onClose }) {
           <DrawerBody sx={{ paddingTop: "80px" }}>
             {/*  Navigation Menu Start */}
             <VStack spacing={10} color={"whiteAlpha.900"}>
-              <Link _hover={{ textDecoration: "none" }}>Home</Link>
-              <Link _hover={{ textDecoration: "none" }}>About</Link>
-              <Link _hover={{ textDecoration: "none" }}>Work</Link>
-              <Link _hover={{ textDecoration: "none" }}>Contact</Link>
+              <Link as={ReachLink} to='/' _hover={{ textDecoration: "none" }}>Home</Link>
+              <Link as={ReachLink} to='about' _hover={{ textDecoration: "none" }}>About</Link>
+              <Link as={ReachLink} to='work' _hover={{ textDecoration: "none" }}>Work</Link>
+              <Link as={ReachLink} to='contact' _hover={{ textDecoration: "none" }}>Contact</Link>
             </VStack>
             {/* Navigation Menu End */}
           </DrawerBody>

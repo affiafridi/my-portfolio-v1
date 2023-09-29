@@ -1,27 +1,35 @@
-// import { extendTheme } from "@chakra-ui/react";
-// import { theme as chakraTheme } from "@chakra-ui/react";
-// import { createBreakpoints } from "@chakra-ui/theme-tools";
-// import { extendTheme, theme as base } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
+import { theme as chakraTheme } from "@chakra-ui/react";
+import { createBreakpoints } from "@chakra-ui/theme-tools";
 
-// const fonts = {
-//   body: `Source Code Pro, Rubik, ${base.fonts.body}`,
-//   heading: `Source Code Pro, Rubik, ${base.fonts.body}`,
-// };
+const fonts = {
+  body: `source code pro`,
+  heading: `Rubik`,
+};
 
-// // const breakpoints = {
-// //     sm: '30em',
-// //     md: '48em',
-// //     lg: '62em',
-// //     xl: '80em',
-// //     '2xl': '96em',
-// //   }
+const colors = {
+    dark: {
+        900: "#461959",
+        800: "7A316F",
+        700: "CD6688"
+    }
+}
 
-// const overrides = {
-//   ...chakraTheme,
-//   fonts,
-//   breakpoints,
-// };
+const overrides = {
+  ...chakraTheme,
+  colors,
+  fonts,
+};
 
-// const customTheme = extendTheme(overrides);
+// const breakpoints = {
+//     sm: '30em',
+//     md: '48em',
+//     lg: '62em',
+//     xl: '80em',
+//     '2xl': '96em',
+//   }
 
-// export default customTheme;
+
+const customTheme = extendTheme(overrides);
+
+export default customTheme;

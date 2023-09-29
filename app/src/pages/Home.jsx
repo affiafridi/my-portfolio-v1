@@ -1,206 +1,265 @@
 import React from "react";
-import { Box, Container, Flex, Heading, Image, Text, HStack, Link, Mark } from "@chakra-ui/react";
-import me from '../assets/logo.png'
-import arrow from '../assets/icons/arrow.svg'
-import icon from '../assets/icons/icon2.png'
-import sign from '../assets/sign.png'
-import myWork from '../assets/my-works.png'
-import gFonts from '../assets/gfonts.png'
-import camera from '../assets/icons/camera.svg'
-import mobile from '../assets/icons/mobile.svg'
-import pencil from '../assets/icons/pencil.svg'
-import react from '../assets/icons/react.svg'
+import { Link as ReactRouterLink } from "react-router-dom";
+import "../index.css";
+import {
+  Box,
+  Flex,
+  Heading,
+  Image,
+  Text,
+  Link as ChakraLink,
+  useColorMode,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import me from "../assets/frontPic.png";
 
+// My Components
+import HomeCredentials from "../components/Cards/HomeCredentials";
+import HomeProjects from "../components/Cards/HomeProjects";
+import ProfilesCard from "../components/Cards/ProfilesCard";
+import HomeServicesCard from "../components/Cards/HomeServicesCard";
+import ExperianceCard from "../components/Cards/ExperianceCard";
+import BottomHeading from "../components/Cards/BottomHeading";
+import MainContainer from "../components/MainContainer";
+import { BiLinkAlt, BiLinkExternal } from "react-icons/bi";
+import ScrollingText from "../components/ScrollingText";
 
+function Home({ children }) {
+  const { color, colorMode } = useColorMode();
+  const bgGradient = useColorModeValue(
+    "linear(to-br, gray.100 -40%, gray.200 100%)",
+    "linear(to-br, gray.600 -40%, gray.700 30%, gray.900 100%)"
+  );
+  const imageBg = useColorModeValue(
+    "radial-gradient(circle at center, #858c99 , #151c3c)",
+    "radial-gradient(circle at center, #e0ecff , #757b8a)"
+  )
+  const headingColor = useColorModeValue("1A202C", "whiteAlpha.800");
+  const smallTextColor = useColorModeValue("gray.600", "whiteAlpha.700");
+  const borderColor = useColorModeValue("gray.200", "gray.700");
+  const cardIconBg = useColorModeValue("gray.700", "");
 
-function Home() {
   return (
     <div>
+      <MainContainer>
+        {/* ===================== First Row Start ======================== */}
 
-      <Container
-        maxWidth={'full'}
-        bg={"#0F0F0F"}
-        py={'80px'}
+        <Box
+          className="firstRow"
+          display={"flex"}
+          flexDir={{ base: "column", md: "column", lg: "row", xl: "row" }}
+          gap={5}
         >
-
-          {/* ==================== Hero Section Start ================= */}
-
-        <Container maxWidth={["container.sm", "container.md", "container.lg", "container.xl"]} p={0} >
-
-            {/* ===================== First Row Start ======================== */}
-
-            <Box className='firstRow' display={'flex'} gap={5}>
-                <Flex className='firstRowLeft' flex={1} gap={5} p={10} borderRadius={'40px'} borderColor={'red.600'} bg={'gray.500'} border={'2px'} >
-                    <Box className='firstRow__innerLeft' flex={1}>
-                        <Image src={me} bg={'blue.500'} borderTopLeftRadius={'40px'} borderBottomRightRadius={'40px'} width={'200px'} />
-                    </Box>
-                    <Box className='firstRow__innerRight' flex={2} alignSelf={''} justifyContent={'space-around'} display={'flex'} flexDirection={'column'} gap={10} >
-                    <Box display={'flex'} flexDir={'column'} gap={2}>
-                        <Text fontFamily={'rubik'} >A WEB DEVELOPER</Text>
-                            <Heading fontFamily={'source code pro'} >AFFI AFRIDI</Heading>
-                            <Text fontFamily={'rubik'} fontWeight={'light'}>I am a Web Designer based in san francisco.</Text>    
-                    </Box>
-                        <Flex justifyContent={'end'}>
-                            <Link>
-                            <Image src={arrow}/>
-                            </Link>
-                        </Flex>
-                    </Box>
-                </Flex>
-                <Flex className='firstRowRight' flexDir={'column'} flex={1} gap={5}>
-                    <Flex className="firstRowRight__top" flexDir={'column'} alignContent={'center'} >
-                        <Box py={3} px={5} maxW={'full'} borderRadius={'20px'} bg={'#718096'}>
-                            <Text fontFamily={'rubik'} fontSize='13px'>LATEST WORK AND FEATURED .</Text>
-                        </Box>
-                    </Flex>
-                    <Flex className="firstRowRight__second" gap={5}>
-                        <Flex className="firstRowRight__secondLeft" flexDir={'column'} alignContent={'center'}  flex={1} border={'1px'} borderRadius={'40px'} py={5} bg={'#718096'}>
-                            <Image src={sign} align={'center'} alignSelf={'center'}/>
-                            <Flex justifyContent={'space-around'} alignItems={'center'}>
-                                <Box>
-                                    <Text fontFamily={'rubik'} fontSize='13px' >MORE ABOUT ME</Text>
-                                    <Text fontFamily={'rubik'} fontSize='19px' fontWeight={'500'}>Credentials</Text>
-                                </Box>
-                                <Box>
-                                    <Image src={arrow}/>
-                                </Box>
-                            </Flex>
-                        </Flex>
-                        <Flex className="firstRowRight__secondRight" flexDir={'column'} alignContent={'center'}  flex={1} border={'1px'} borderRadius={'40px'} py={5} bg={'#718096'}>
-                        <Image src={myWork} align={'center'} alignSelf={'center'}/>
-                            <Flex justifyContent={'space-around'} alignItems={'center'}>
-                                <Box>
-                                    <Text fontFamily={'rubik'} fontSize='13px' >SHOWCASE</Text>
-                                    <Text fontFamily={'rubik'} fontSize='19px' fontWeight={'500'}>Credentials</Text>
-                                </Box>
-                                <Box>
-                                    <Image src={arrow}/>
-                                </Box>
-                            </Flex>
-                        </Flex>
-                    </Flex>
-                </Flex>
+          <Flex
+            className="firstRowLeft"
+            flexDir={{ base: "column", md: "column", lg: 'column', xl: 'row' }}
+            alignItems={{ base: "center", md: "start", lg: "start" }}
+            flex={1}
+            gap={{ base: 5, md: 10, lg: 10, xl: 10 }}
+            p={{ base: 8, md: 10, lg: 10, xl: 10 }}
+            borderRadius={"30px"}
+            bgGradient={bgGradient}
+            border={"1px"}
+            borderColor={borderColor}
+            _hover={{
+              borderColor: "gray.500",
+              transitionDuration: "0.3s",
+              transitionTimingFunction: "ease-in-out",
+              transform: "translateY(-10px)",
+            }}
+          >
+            <Box
+              className="firstRow__innerLeft"
+              flex={{ base: 1, md: 1, lg: 1.5, xl: 1 }}
+            >
+              <Image
+                src={me}
+                bg={imageBg}
+                objectFit={"contain"}
+                borderRadius={"20px"}
+                width={{
+                  base: "250px",
+                  md: "250px",
+                  lg: "200px",
+                  xl: "200px",
+                }}
+              />
             </Box>
-            {/* ================ First Row End =====================*/}
-            
-            {/* ================== Second Row Start ====================*/}
-            <Flex className="secondRow" gap={5} mt={5}>
-                <Flex className="secondRowLeft" flex={1} flexDir={'column'} alignContent={'center'} border={'1px'} borderRadius={'40px'} py={5} bg={'#718096'}>
-                <Image src={gFonts} align={'center'} alignSelf={'center'}/>
-                            <Flex justifyContent={'space-around'} alignContent={'center'} alignItems={'center'}>
-                                <Box>
-                                    <Text fontFamily={'rubik'} fontSize='13px' >MORE ABOUT ME</Text>
-                                    <Text fontFamily={'rubik'} fontSize='19px' fontWeight={'500'}>Credentials</Text>
-                                </Box>
-                                <Box>
-                                    <Image src={arrow}/>
-                                </Box>
-                            </Flex>
-                </Flex>
-
-                <Flex className="secondRowCenter"  flex={2} flexDir={'column'} justifyContent={'space-between'} borderRadius={'40px'} pt={12} pb={5} bg={'#718096'}>
-                    <Box>
-                    <Flex gap={20} justifyContent={'center'}>
-                        <Image src={camera}/>
-                        <Image src={pencil}/>
-                        <Image src={react}/>
-                        <Image src={mobile}/>
-                    </Flex>
-                    </Box>
-                    <Box>
-                    <Flex justifyContent={'space-between'} alignItems={'center'} px={10}>
-                        <Box display={'flex'} flexDir={'column'}>
-                            <Text fontFamily={'rubik'} fontSize='13px' alignItems={'center'}>SPECIALIZATION</Text>
-                            <Text fontFamily={'rubik'} fontSize='19px' fontWeight={'500'}>Services Offering</Text>
-                        </Box>
-                        <Box>
-                            <Image src={arrow} />
-                        </Box>
-                    </Flex>
-                    </Box>
-                </Flex>
-
-                <Flex className="secondRowRight" flex={1} flexDir={'column'} justifyContent={'space-between'} borderRadius={'40px'} pt={12} pb={5} bg={'#718096'}>
-                    <Flex justifyContent={'center'} gap={5}>
-                        <Image src={pencil} border={'1px'} borderRadius={50} borderColor={'yellow.50'} p={5}/>
-                        <Image src={react} border={'1px'} borderRadius={50} borderColor={'yellow.50'} p={5}/>
-                    </Flex>
-                            <Flex justifyContent={'space-around'}>
-                                <Box>
-                                    <Text fontFamily={'rubik'} fontSize='13px'>LET'S CONNECT</Text>
-                                    <Text fontFamily={'rubik'} fontSize='19px' fontWeight={'500'}>Profiles</Text>
-                                </Box>
-                                <Box>
-                                    <Image src={arrow}/>
-                                </Box>
-                            </Flex>
-                </Flex>
+            <Box
+              className="firstRow__innerRight"
+              flex={2}
+              justifyContent={"space-around"}
+              display={"flex"}
+              flexDirection={"column"}
+              gap={10}
+            >
+              <Box
+                display={"flex"}
+                flexDir={"column"}
+                alignItems={{ base: "center", md: "start", lg: "start" }}
+                gap={2}
+              >
+                <Text
+                  color={smallTextColor}
+                  fontSize={{
+                    base: "14",
+                    md: "14px",
+                    lg: "16px",
+                    xl: "16px",
+                  }}
+                >
+                  A WEB DEVELOPER
+                </Text>
+                <Heading
+                  color={headingColor}
+                  fontSize={{
+                    base: "25",
+                    md: "38px",
+                    lg: "30px",
+                    xl: "36px",
+                  }}
+                >
+                  AFFI AFRIDI
+                </Heading>
+                <Text
+                  color={smallTextColor}
+                  textAlign={{ base: "center", md: "start", lg: "start" }}
+                  fontWeight={"400"}
+                >
+                  I'm Web Developer from Pakistan, Shaping the virtual world
+                  with code.
+                </Text>
+              </Box>
+              <Flex justifyContent={"end"}>
+                <ChakraLink to={"/about"} as={ReactRouterLink}>
+                  <BiLinkExternal fontSize={"22px"} />
+                </ChakraLink>
+              </Flex>
+            </Box>
+          </Flex>
+          <Flex className="firstRowRight" flexDir={"column"} flex={1} gap={5}>
+            <Flex
+              className="firstRowRight__top"
+              flexDir={"column"}
+              alignContent={"center"}
+            >
+              <Box
+                overflow={"hidden"}
+                py={5}
+                px={5}
+                maxW={"full"}
+                borderRadius={"30px"}
+                bgGradient={bgGradient}
+                border={"1px"}
+                borderColor={borderColor}
+              >
+                <ScrollingText />
+              </Box>
             </Flex>
-            {/* ==================== Second Row End =================== */}
-
-            {/* ==================== Third Row Start =================== */}
-            <Flex className="thirdRow" mt={5} gap={5}>
-                <Flex className="thirdRowLeft" flex={1} bg={'#718096'} p={6} gap={5} borderRadius={'40px'}>
-                <Flex gap={5} width={'full'}>
-
-                <Flex className="thirdRowLeft__left" width={'33.33%'} flexDir={'column'} alignContent={'center'} alignItems={'center'} gap={3}  px={10} py={10} bg={'gray.400'} borderRadius={'40px'}>
-                    <Text fontFamily={'rubik'} fontSize='32px' fontWeight={'500'}>01</Text>
-                    <Text fontFamily={'rubik'} fontSize='13px' textAlign={'center'}>YEARS EXPERIENCE</Text>
-                </Flex>
-                <Flex className="thirdRowLeft__center" width={'33.33%'} flexDir={'column'} alignContent={'center'} alignItems={'center'} gap={3} px={10} py={10} bg={'gray.400'} borderRadius={'40px'}>
-                    <Text fontFamily={'rubik'} fontSize='32px' fontWeight={'500'}>12+</Text>
-                    <Text fontFamily={'rubik'} fontSize='13px' textAlign={'center'}>CLIENTS WORLDWIDE</Text>
-                </Flex>
-                <Flex className="thirdRowLeft__right" width={'33.33%'} flexDir={'column'} alignContent={'center'} alignItems={'center'} gap={3} px={10} py={10} bg={'gray.400'} borderRadius={'40px'}>
-                    <Text fontFamily={'rubik'} fontSize='32px' fontWeight={'500'}>30+</Text>
-                    <Text fontFamily={'rubik'} fontSize='13px' textAlign={'center'}>TOTAL PROJECTS</Text>
-                </Flex>
-
-                </Flex>
-                </Flex>
-
-                <Flex className="thirdRowRight" flexDir={'column'} flex={1} justifyContent={'flex-end'} position={'relative'} bg={'#718096'} p={6} gap={5} borderRadius={'40px'}>
-                    <Box>
-                        <Image src={icon} height={'70'} position={'absolute'} top={0}/>
-                    </Box>
-                    <Flex>
-                        <Flex flex={1}>
-                            <Text fontFamily={'rubik'} fontSize='40px' fontWeight={'500'}>Let's <br /> work <Mark color={'blue.200'}> together.</Mark></Text>
-                        </Flex>
-                        <Flex alignContent={'center'} alignItems={'center'}>
-                            <Image src={arrow}/>
-                        </Flex>
-                    </Flex>
-                </Flex>
+            <Flex
+              className="firstRowRight__second"
+              flexDir={{
+                base: "column",
+                sm: "row",
+                md: "row",
+                lg: "row",
+                xl: "row",
+              }}
+              gap={5}
+            >
+              <HomeCredentials />
+              <HomeProjects />
             </Flex>
-            {/* ==================== Third Row End =================== */}
+          </Flex>
+        </Box>
+        {/* ================ First Row End =====================*/}
 
-            {/* ==================== FOOTER START =================== */}
-            
-            <Flex pt={'120px'} flexDir={'column'} alignContent={'center'} alignItems={'center'} gap={7}>
+        {/* ================== Second Row Start ====================*/}
+        <Flex
+          className="secondRow"
+          flexDir={{ base: "column", md: "row", lg: "row", xl: "row" }}
+          gap={5}
+          mt={5}
+        >
+          {/* Mobile flex direction for first two divs */}
+
+          <Flex
+            className="secondRowLeft"
+            gap={{ base: 10, md: 2 }}
+            flex={1}
+            flexDir={"column"}
+            alignContent={"center"}
+            borderRadius={"30px"}
+            p={5}
+            bgGradient={bgGradient}
+            border={"1px"}
+            borderColor={borderColor}
+            _hover={{
+              borderColor: "gray.500",
+              transitionDuration: "0.3s",
+              transitionTimingFunction: "ease-in-out",
+              transform: "translateY(-7px)",
+            }}
+          >
+            {/* <Image src={gFonts} align={"center"} alignSelf={"center"} /> */}
+            <Box display={"flex"} justifyContent={"center"} fontSize={"80px"}>
+              📦
+            </Box>
+            <Flex
+              justifyContent={"space-around"}
+              alignContent={"center"}
+              alignItems={"center"}
+            >
+              <Box display={"flex"} flexDir={"column"} gap={1}>
+                <Text
+                  fontSize={{
+                    base: "14px",
+                    md: "13px",
+                    lg: "13px",
+                    xl: "13px",
+                  }}
+                  color={smallTextColor}
+                >
+                  PACKAGES IN DETAILS
+                </Text>
+                <Heading
+                  fontSize={{
+                    base: "20px",
+                    md: "19px",
+                    lg: "19px",
+                    xl: "19px",
+                  }}
+                  fontWeight={"500"}
+                  color={headingColor}
+                >
+                  Packages
+                </Heading>
+              </Box>
+              <ChakraLink to={"/pricing"} as={ReactRouterLink}>
                 <Box>
-                    <Link top={"#"} _hover={{ textDecor: "none" }}>
-                        <Heading fontSize={[16, 20, 24, 28, 32]} fontFamily={'source code pro'} color={"whiteAlpha.900"}>AFFI.</Heading>
-                    </Link>
+                  <BiLinkExternal fontSize={"22px"} />
                 </Box>
-                <Box>
-                <HStack fontSize={[10, 10, 14, 16, 16]} spacing={[3, 4, 5, 10]} fontFamily={'source code pro'} fontWeight={500} color={"whiteAlpha.500"}>
-                  <Link display={'flex'} gap={2} _hover={{ textDecoration: "none", color: 'gray.400' }}>HOME</Link>
-                  <Link display={'flex'} gap={2} _hover={{ textDecoration: "none", color: 'gray.400' }}>ABOUT</Link>
-                  <Link display={'flex'} gap={2} _hover={{ textDecoration: "none", color: 'gray.400' }}>WORK</Link>
-                  <Link display={'flex'} gap={2} _hover={{ textDecoration: "none", color: 'gray.400' }}>CONTACT</Link>
-                </HStack>
-                </Box>
-                <Box>
-                    <Text fontFamily={'rubik'} fontSize='13px' color={'whiteAlpha.600'} textAlign={'center'}>2023 © All rights reserved by</Text>
-                </Box>
+              </ChakraLink>
             </Flex>
-            
-            {/* ==================== FOOTER END =================== */}
-            
-        </Container>
-      {/* ======================= Hero Section End =========================== */}
-      </Container>
+          </Flex>
+
+          <HomeServicesCard />
+          <ProfilesCard />
+        </Flex>
+        {/* ==================== Second Row End =================== */}
+
+        {/* ==================== Third Row Start =================== */}
+        <Flex
+          className="thirdRow"
+          flexDir={{ base: "column", md: "column", lg: "row" }}
+          mt={5}
+          gap={5}
+        >
+          <ExperianceCard />
+          <BottomHeading />
+        </Flex>
+        {/* ==================== Third Row End =================== */}
+      </MainContainer>
     </div>
   );
 }
